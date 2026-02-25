@@ -45,12 +45,12 @@ public class EditModel : PageModel
 		return Page();
 	}
 
-	public ActionResult OnPost()
+	public async Task<ActionResult> OnPost()
 	{
 		// Todo: Use mediator to send a "command" to update the address book entry, redirect to entry list.
 		if (ModelState.IsValid)
 		{
-			_ = _mediator.Send(UpdateAddressRequest);
+			_ = await _mediator.Send(UpdateAddressRequest);
 			return RedirectToPage("Index");
 		}
 		return Page();
